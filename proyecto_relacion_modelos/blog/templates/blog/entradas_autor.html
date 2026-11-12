@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block titulo %}Entradas de {{ autor.nombre }}{% endblock %}
+{% block contenido %}
+    <a class="volver" href="{% url 'lista_entradas' %}">← Volver al inicio</a>
+    <h2>Entradas de {{ autor.nombre }}</h2>
+    {% for entrada in entradas %}
+    <div class="tarjeta">
+        <h2>{{ entrada.titulo }}</h2>
+        <p>{{ entrada.contenido }}</p>
+        <p class="fecha">Publicado: {{ entrada.fecha_publicacion }}</p>
+    </div>
+    {% empty %}
+    <p>Este autor aún no tiene entradas.</p>
+    {% endfor %}
+{% endblock %}
